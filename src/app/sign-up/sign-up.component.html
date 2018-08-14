@@ -1,0 +1,106 @@
+<div class="container">
+  <h1 class="well">Register Here</h1>
+  <div class="col-lg-12 well">
+    <div class="row">
+      <form #signUpForm="ngForm" (ngSubmit)="signUpForm.valid && signup({email:email,firstName:firstName,lastName:lastName,password:password})">
+  
+        <div class="col-sm-12">
+          <div class="row">
+            <div class="col-sm-6 form-group">
+              <label>First Name</label>
+              <input type="text" placeholder="Enter First Name Here.." class="form-control" name="firstName" #firstNameController="ngModel" [(ngModel)]="firstName"
+                required>
+              <p *ngIf="firstNameController.errors?.required && firstNameController.touched">First Name is required</p>
+            </div>
+            <div class="col-sm-6 form-group">
+              <label>Last Name</label>
+              <input type="text" placeholder="Enter Last Name Here.." class="form-control" name="lastName" [(ngModel)]="lastName"
+                required>
+            </div>  
+          </div>
+          <div class="form-group" >
+            <label>Email Address</label>
+            <input type="email" placeholder="Enter Email Here.." class="form-control" name="email" [(ngModel)]="email" pattern="[^ @]*@[^ @]*"
+              #emailController="ngModel" required>
+           
+              <p *ngIf="emailController.errors?.required && emailController.touched">Email is required</p>
+              <p *ngIf="emailController.errors?.pattern">Email must contain at least the @ character</p>
+           
+          </div>
+          <div class="form-group">
+            <label>Password</label>
+            <input type="password" #passwordController="ngModel" name="password" [(ngModel)]="password" placeholder="Enter Your Password .." required class="form-control" minlength="8">
+            <p *ngIf="passwordController.errors?.required && passwordController.touched">Password is required</p>
+              <p *ngIf="passwordController.errors?.pattern">Email must contain at least the @ character</p>
+          </div>
+          <input type="submit" class="btn btn-lg btn-info" [disabled]="signUpForm.invalid" value="Submit" >
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- <div class="container">
+
+<form novalidate #f="ngForm" (ngSubmit)="emailonSubmit()">
+email
+    <fieldset ngModelGroup="name">email
+      <div class="form-group">email
+        <label>First Name</label>email••••••••••••••••••
+        <input type="text"email
+               class="form-control"ema••••••••••••••••••l
+               name="firstName"
+               [(ngModel)]="model.firstName"
+               required>
+      </div>
+  
+      <div class="form-group">
+        <label>Last Name</label>
+        <input type="text"
+               class="form-control">
+      </div>
+    </fieldset>
+  
+  
+    <div class="form-group"
+         [ngClass]="{
+      'has-danger': email.invalid && (email.dirty || email.touched),
+      'has-success': email.valid && (email.dirty || email.touched)
+    }">
+      <label>Email</label>
+      <input type="email"
+             class="form-control"
+             name="email"
+             [(ngModel)]="model.email"
+             pattern="[^ @]*@[^ @]*"
+             #email="ngModel"
+             required>
+      <div class="form-control-feedback"
+             *ngIf="email.errors && (email.dirty || email.touched)">
+          <p *ngIf="email.errors.required">Email is required</p>
+          <p *ngIf="email.errors.pattern">Email must contain at least the @ character</p>
+      </div>
+      <pre>Valid? {{f.form.controls.email?.valid}}</pre>
+      <pre>Dirty? {{f.form.controls.email?.dirty}}</pre>
+      <pre>Touched? {{f.form.controls.email?.touched}}</pre>
+    </div>
+  
+  
+    <div class="form-group">
+      <label>Password</label>
+      <input type="password"
+             class="form-control"
+             minlength="8">
+    </div>
+  
+    <button type="submit"
+            class="btn btn-primary">Submit
+    </button>
+  
+    <pre>{{ f.value | json }}</pre>
+    <pre>{{ model | json }}</pre>
+  
+  </form>
+</div> -->
